@@ -4,8 +4,8 @@ import java.awt.*;
 
 
 /**
-* @class GuiUpperPanel	is a JPanel containing a vertical JSplitPane, containing JPanel panel1 (above, contains a JLabel and a JTextArea and a JButton) and JPanel panel2 (below, contains four JButtons).
-* 						also is an ActionListener for the clickable JButtons.
+* @class GuiEingabePanel	is a JPanel containing a vertical JSplitPane, containing JPanel panel1 (above, contains a JLabel and a JTextArea and a JButton) and JPanel panel2 (below, contains four JButtons).
+* 				also is an ActionListener for the clickable JButtons.
 *
 * the upper JTextArea serves for user input, to enter a salutation and a Name. Pressing the startButton will parse the user input and extract the gender, title, first name and surname.
 */

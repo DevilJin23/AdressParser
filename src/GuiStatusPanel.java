@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+* @class GuiStatusPanel is a JPanel containing a JLabel and a JTextField. The statusTextField shows the current program status and error messages, if an error occurs.
+*/
 public class GuiStatusPanel extends JPanel {
     private JTextField statusTextFeld;
 

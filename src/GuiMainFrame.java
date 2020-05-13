@@ -1,12 +1,28 @@
 import java.awt.*;
+import javax.swing.*;
 
 public class GuiMainFrame extends javax.swing.JFrame {
     private static GuiMainFrame mainFrame;
+    private GuiAusgabePanel ausgabePanel;
+    private GuiStatusPanel statusPanel;
+    private GuiEingabePanel eingabePanel;
+    private JPanel mainPanel;
 
     public GuiMainFrame(int sizeX, int sizeY, String title) {
         this.setTitle(title);
         this.setSize(sizeX, sizeY);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+        this.getContentPane().add(mainPanel);
+        ausgabePanel = new GuiAusgabePanel();
+        statusPanel = new GuiStatusPanel();
+        eingabePanel = new GuiEingabePanel();
+
+        mainPanel.add(eingabePanel, BorderLayout.NORTH);
+        mainPanel.add(statusPanel, BorderLayout.CENTER);
+        mainPanel.add(ausgabePanel, BorderLayout.SOUTH);
 
         this.setVisible(true);
         mainFrame = this;
@@ -18,8 +34,18 @@ public class GuiMainFrame extends javax.swing.JFrame {
      */
     public static GuiMainFrame getInstance() {
         if (mainFrame == null)
-            mainFrame = new GuiMainFrame(900, 300, "Kontaktsplitter");
+            mainFrame = new GuiMainFrame(1200, 400, "Kontaktsplitter");
         return mainFrame;
+    }
+
+    public GuiEingabePanel getEingabePanel() {
+        return eingabePanel;
+    }
+    public GuiAusgabePanel getAusgabePanel() {
+        return ausgabePanel;
+    }
+    public GuiStatusPanel getStatusPanel() {
+        return statusPanel;
     }
 
 }

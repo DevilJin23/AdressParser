@@ -1,6 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+* @class GuiAusgabePanel	is a JPanel containing a vertical JSplitPane, containing JPanel panel1 (above, contains four JLabels and four JTextFields) and JPanel panel2 (below, contains one JLabel and one JTextField).
+* 				            also is an ActionListener for the clickable JButtons.
+*
+* the four JTextFields above serve for output and show the gender, title, first name and surname of the currently parsed person.
+* the JTextArea below shows the complete, auto-generated letter salutation for the currently parsed person.
+*/
 public class GuiAusgabePanel extends JPanel {
     private JTextField anredeTextFeld, titelTextFeld, vornameTextFeld, nachnameTextFeld;
     private JTextArea gesamtAusgabeTextArea;

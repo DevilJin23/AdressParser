@@ -1,26 +1,27 @@
 import javax.swing.*;
-import java.awt.*;
 
 /**
-* @class GuiAusgabePanel	is a JPanel containing a vertical JSplitPane, containing JPanel panel1 (above, contains four JLabels and four JTextFields) and JPanel panel2 (below, contains one JLabel and one JTextField).
-* 				            also is an ActionListener for the clickable JButtons.
-*
-* the four JTextFields above serve for output and show the gender, title, first name and surname of the currently parsed person.
-* the JTextArea below shows the complete, auto-generated letter salutation for the currently parsed person.
-*/
+ * @class GuiAusgabePanel	is a JPanel containing a vertical JSplitPane, containing JPanel panel1 (above, contains four JLabels and four JTextFields) and JPanel panel2 (below, contains one JLabel and one JTextField).
+ * 				            also is an ActionListener for the clickable JButtons.
+ *
+ * the four JTextFields above serve for output and show the gender, title, first name and surname of the currently parsed person.
+ * the JTextArea below shows the complete, auto-generated letter salutation for the currently parsed person.
+ */
 public class GuiAusgabePanel extends JPanel {
+    private JPanel panel1, panel2;
+    private JLabel anredeLabel, titelLabel, vornameLabel, nachnameLabel, gesamtAusgabeLabel;
     private JTextField anredeTextFeld, titelTextFeld, vornameTextFeld, nachnameTextFeld;
     private JTextArea gesamtAusgabeTextArea;
 
     public GuiAusgabePanel() {
-    JPanel panel1 = new JPanel();
-    JPanel panel2 = new JPanel();
+    panel1 = new JPanel();
+    panel2 = new JPanel();
 
-    JLabel anredeLabel = new JLabel("Anrede: ");
-    JLabel titelLabel = new JLabel("Titel: ");
-    JLabel vornameLabel = new JLabel("Vorname: ");
-    JLabel nachnameLabel = new JLabel("Nachname: ");
-    JLabel gesamtAusgabeLabel = new JLabel("Briefanrede: ");
+    anredeLabel = new JLabel("Anrede: ");
+    titelLabel = new JLabel("Titel: ");
+    vornameLabel = new JLabel("Vorname: ");
+    nachnameLabel = new JLabel("Nachname: ");
+    gesamtAusgabeLabel = new JLabel("Briefanrede: ");
 
     anredeTextFeld = new JTextField("",5);
     anredeTextFeld.setEditable(false);

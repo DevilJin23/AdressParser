@@ -5,11 +5,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
 /**
- * @class GuiEditInputFrame	is a JFrame containing the mainPanel with a BorderLayout, containing a vertical JSplitPane in the North (with panel1 above and panel2 below) and panel3 in the South.
+ * @class GuiEditInputFrame	is a JFrame containing the mainPanel with a BorderLayout, containing the upperPanel in the North (with a vertical JSplitPane, with panel0 above and panel1 below) and the lowerPanel in the South (with a vertical JSplitPane, with panel2 above and panel3 below).
  *
- * panel1 contains four JLabels, two JComboBoxes (for selecting salutation and title) and two JTextFields (for editing first name and surname)-
- * panel2 contains two JLabels, two JTextFields (for entering new entries for salutation and title lists) and four JButtons (for adding new sentries to salutation and title lists and for deleting selected entries)
- * panel3 contains two JButtons, the cancelButton simply disposes the GuiEditInputFrame, the okButton applies all values from the JTextFields and JComboBoxes to the GuiAusgabePanel and saves the salutation and title lists persistently to a file, before disposing the GuiEditInputFrame.
+ * panel0 is located at the top of the frame and contains two JLabels and two editable JTextFields (for first name and surname).
+ * panel1 is located below panel0 and contains three JLabels and three JComboBoxes (for selecting salutation, gender and title).
+ * panel2 is located above panel3 and contains two JLabels, two editable JTextFields and four JButtons (for adding new entries to the salutation and title lists and for deleting selected entries).
+ * panel3 is located at the bottom of the frame and contains two JButtons, the cancelButton simply disposes the GuiEditInputFrame, the okButton applies all values from the JTextFields and JComboBoxes to the GuiAusgabePanel and saves the salutation and title lists persistently to a file, before disposing the GuiEditInputFrame.
  */
 public class GuiEditInputFrame extends javax.swing.JFrame implements ActionListener {
     private JPanel mainPanel, upperPanel, lowerPanel, panel0, panel1, panel2, panel3;
@@ -100,6 +101,20 @@ public class GuiEditInputFrame extends javax.swing.JFrame implements ActionListe
         this.setVisible(true);
     }
 
+    /**
+     * actionPerformed is executed when the user clicks at one of the buttons
+     *
+     * if the cancelButton is clicked, the GuiEditInputFrame is disposed without any other actions.
+     * if the okButton is clicked, all values from the JTextFields and JComboBoxes are applied to the GuiAusgabePanel and saves the salutation and title lists persistently to a file, before disposing the GuiEditInputFrame.
+     *
+     * if the addNewAnredeButton is clicked, the value from the editable JTextField newAnredeTextFeld is added as a new list entry to the JComboBox anredeAuswahl.
+     * if the addNewTitelButton is clicked, the value from the editable JTextField newTitelTextFeld is added as a new list entry to the JComboBox titelAuswahl.
+     * if the deleteAnredeButton is clicked, the currently selected list entry is deleted from the JComboBox anredeAuswahl.
+     * if the deleteTitelButton is clicked, the currently selected list entry is deleted from the JComboBox titelAuswahl.
+     *
+     * @param ae	is auto-generated when the user clicks at a button
+     *		        contains information about which button was clicked
+     */
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == okButton) {
             GuiAusgabePanel ausgabePanel = GuiMainFrame.getInstance().getAusgabePanel();

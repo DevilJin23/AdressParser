@@ -50,8 +50,8 @@ public class GuiEingabePanel extends JPanel implements ActionListener {
      * if the saveButton is clicked, the current data is saved as a contact in the attached CRM-System. This requires a CRM-System to be attached correctly.
      * if the loadButton is clicked, an existing contact can be loaded from the attached CRM-System. This requires a CRM-System to be attached correctly.
      *
-     * @param ae	is auto-generated when the user clicks at a button in the GuiFrame
-     *		 ae	contains information about which button was clicked
+     * @param ae	is auto-generated when the user clicks at a button
+     *		        contains information about which button was clicked
      */
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == startButton) {

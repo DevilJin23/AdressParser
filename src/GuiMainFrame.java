@@ -2,15 +2,14 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
-* @class GuiMainFrame	is a JFrame containing a JPanel with a BorderLayout, containing the GuiEingabePanel in the north, the GuiStatusPanel in the center and the GuiAusgabePanel in the south.
-*/
-
+ * @class GuiMainFrame	is a JFrame containing a JPanel with a BorderLayout, containing the GuiEingabePanel in the north, the GuiStatusPanel in the center and the GuiAusgabePanel in the south.
+ */
 public class GuiMainFrame extends javax.swing.JFrame {
     private static GuiMainFrame mainFrame;
+    private JPanel mainPanel;
     private GuiAusgabePanel ausgabePanel;
     private GuiStatusPanel statusPanel;
     private GuiEingabePanel eingabePanel;
-    private JPanel mainPanel;
 
     public GuiMainFrame(int sizeX, int sizeY, String title) {
         this.setTitle(title);

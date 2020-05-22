@@ -172,12 +172,12 @@ public class GuiEditInputFrame extends javax.swing.JFrame implements ActionListe
         return -1;
     }
     
-        public List<String> getElementList(JComboBox comboBox) {
-        List<String> elementList = new ArrayList<String>();
+    public ArrayList<String> getElementList(JComboBox comboBox) {
+        ArrayList<String> elementList = new ArrayList<String>();
         for (int i = 0; i < comboBox.getItemCount(); i++) {
             elementList.add(comboBox.getItemAt(i).toString());
         }
-        return elementList
+        return elementList;
     }
 
     public void addElement(String element, JComboBox comboBox) {

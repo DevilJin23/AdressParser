@@ -36,20 +36,23 @@ public class GuiEditInputFrame extends javax.swing.JFrame implements ActionListe
         newAnredeLabel = new JLabel("Neue Anrede: ");
         newTitelLabel = new JLabel("Neuer Titel: ");
 
-        // TODO: gleich befüllen mit geparsten Teilen der Eingabe
         newAnredeTextFeld = new JTextField("",5);
         newTitelTextFeld = new JTextField("",20);
-        vornameTextFeld = new JTextField("",20);
-        nachnameTextFeld = new JTextField("",30);
+        vornameTextFeld = new JTextField("",20); // TODO: befüllen mit vorname
+        nachnameTextFeld = new JTextField("",30); // TODO: befüllen mit nachname
 
-        // TODO: Liste aller gespeicherten Anreden abrufen (Liste oder Array mit Strings), für Bestückung der ComboBox
         String[] anredeListe = {"Herr", "Frau", "Herr/Frau"};
         anredeAuswahl = new JComboBox(anredeListe);
-        // TODO: Liste aller gespeicherten Titel abrufen (Liste oder Array mit Strings), für Bestückung der ComboBox
+        // TODO: gleich befüllen mit geparster Anrede
+        //setAnrede(anrede);
         String[] titelListe = {"Dr.", "Dr. med.", "Dr. habil.", "Dr. rer. nat.", "Prof. Dr.", "Dipl. Ing.", "Prof. Dr. Ing."};
         titelAuswahl = new JComboBox(titelListe);
+        // TODO: gleich befüllen mit geparstem Titel
+        // setTitel(titel);
         String[] genders = {"männlich", "weiblich", "divers"};
         geschlechtAuswahl = new JComboBox(genders);
+        // TODO: gleich befüllen mit geparstem Geschlecht
+        // setGeschlecht(geschlecht);
 
         okButton = new JButton("OK");
         okButton.addActionListener(this);
@@ -137,11 +140,13 @@ public class GuiEditInputFrame extends javax.swing.JFrame implements ActionListe
 
         else if (ae.getSource() == addNewAnredeButton && !getNewAnrede().isEmpty()) {
             System.out.println("neue Anrede hinzugefügt: " + getNewAnrede());
-            anredeAuswahl.addItem(getNewAnrede());
+            addElement(getNewAnrede(), anredeAuswahl);
+            //anredeAuswahl.addItem(getNewAnrede());
         }
         else if (ae.getSource() == addNewTitelButton && !getNewTitel().isEmpty()) {
             System.out.println("neuer Titel hinzugefügt: " + getNewTitel());
-            titelAuswahl.addItem(getNewTitel());
+            addElement(getNewTitel(), titelAuswahl);
+            //titelAuswahl.addItem(getNewTitel());
         }
         else if (ae.getSource() == deleteAnredeButton && anredeAuswahl.getSelectedItem() != null) {
             System.out.println("Anrede gelöscht: " + anredeAuswahl.getSelectedItem().toString());
@@ -150,6 +155,52 @@ public class GuiEditInputFrame extends javax.swing.JFrame implements ActionListe
         else if (ae.getSource() == deleteTitelButton && titelAuswahl.getSelectedItem() != null) {
             System.out.println("Titel gelöscht: " + titelAuswahl.getSelectedItem().toString());
             titelAuswahl.removeItemAt(titelAuswahl.getSelectedIndex());
+        }
+    }
+
+    public boolean containsElement(String element, JComboBox comboBox) {
+        for (int i = 0; i < comboBox.getItemCount(); i++) {
+            if (element.equals(comboBox.getItemAt(i).toString())) return true;
+        }
+        return false;
+    }
+
+    public int getIndex(String element, JComboBox comboBox) {
+        for (int i = 0; i < comboBox.getItemCount(); i++) {
+            if (element.equals(comboBox.getItemAt(i).toString())) return i;
+        }
+        return -1;
+    }
+
+    public void addElement(String element, JComboBox comboBox) {
+        if (!containsElement(element, comboBox))
+            comboBox.addItem(element);
+    }
+
+    public void setTitel(String titel) {
+        if (containsElement(titel, titelAuswahl))
+            titelAuswahl.setSelectedIndex(getIndex(titel, titelAuswahl));
+        else {
+            addElement("", titelAuswahl);
+            titelAuswahl.setSelectedIndex(getIndex("", titelAuswahl));
+        }
+    }
+
+    public void setAnrede(String anrede) {
+        if (containsElement(anrede, anredeAuswahl))
+            anredeAuswahl.setSelectedIndex(getIndex(anrede, anredeAuswahl));
+        else {
+            addElement("", anredeAuswahl);
+            anredeAuswahl.setSelectedIndex(getIndex("", anredeAuswahl));
+        }
+    }
+
+    public void setGeschlecht(String geschlecht) {
+        if (containsElement(geschlecht, geschlechtAuswahl))
+            geschlechtAuswahl.setSelectedIndex(getIndex(geschlecht, geschlechtAuswahl));
+        else {
+            addElement("", geschlechtAuswahl);
+            geschlechtAuswahl.setSelectedIndex(getIndex("", geschlechtAuswahl));
         }
     }
 
